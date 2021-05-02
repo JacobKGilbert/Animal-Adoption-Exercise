@@ -4,7 +4,8 @@
 {% block Body %}
 <h1>Pets for Adoption</h1>
 
-<div class="row row-cols-1 row-cols-md-3 g-4"></div>
+<div class="container-fluid">
+  <div class="row row-cols-1 row-cols-md-3 g-4"></div>
   {% for pet in pets %}
   <div class="col">
     <div class="card h-100">
@@ -16,16 +17,16 @@
       <div class="card-footer">
         <small class="text-muted">
           {% if pet.available %}
-            <b>Is Available</b>
+          <b>Is Available</b>
           {% else %}
-            Being Adopted
+          Being Adopted
           {% endif %}
         </small>
       </div>
     </div>
   </div>
   {% endfor %}
+  </div>
+  <a href="/add" class="btn btn-secondary">Add Pet</a>
 </div>
-
-<a href="/pets/new" class="btn btn-secondary">Add Pet</a>
 {% endblock %}

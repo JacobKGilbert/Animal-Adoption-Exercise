@@ -1,6 +1,6 @@
 from flask import Flask, render_template, redirect, request
 from flask_debugtoolbar import DebugToolbarExtension
-from models import db, connect_db
+from models import db, connect_db, Pet
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql:///adopt'
@@ -16,4 +16,11 @@ db.create_all()
 @app.route('/')
 def home_rt():
   '''Get home page.'''
+  pets = Pet.query.all()
   return render_template('home.html')
+
+@app.route('/add', methods=['GET', 'POST'])
+def create_new_pet():
+  '''GET new pet form. POST new pet to database'''
+  if request.method == 'POST':
+    
