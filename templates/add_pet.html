@@ -5,6 +5,12 @@
 <h1>Add New Pet</h1>
 
 <form action="/add" method="post">
+  {{form.hidden_tag()}}
+
+  {% for field in form if field.widget.input_type != 'hidden' %}
   
+  {% endfor %}
+
+  <button type="submit">Submit</button>
 </form>
 {% endblock %}
